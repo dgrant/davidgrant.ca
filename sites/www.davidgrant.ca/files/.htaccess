@@ -13,3 +13,11 @@ SetHandler Drupal_Security_Do_Not_Remove_See_SA_2006_006
 <IfModule mod_php5.c>
   php_flag engine off
 </IfModule>
+# PHP 4, Apache 1.
+<IfModule mod_php4.c>
+  php_flag engine off
+</IfModule>
+# PHP 4, Apache 2.
+<IfModule sapi_apache2.c>
+  php_flag engine off
+</IfModule>
