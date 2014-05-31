@@ -711,25 +711,19 @@ function mollom_update_7005() {
     // Note that this is just to have some values. 'quality' and 'spam' are
     // completely unrelated otherwise.
     // MOLLOM_ANALYSIS_SPAM (2)
-
-    if (db_field_exists('mollom', 'quality')) {
-      $quality = 'quality';
-    } else {
-      $quality = 'quality_score';
-    }
     db_update('mollom')
       ->fields(array('spam' => 2))
-      ->condition($quality, 0.5, '<')
+      ->condition('quality', 0.5, '<')
       ->execute();
     // MOLLOM_ANALYSIS_UNSURE (3)
     db_update('mollom')
       ->fields(array('spam' => 3))
-      ->condition($quality, 0.5, '=')
+      ->condition('quality', 0.5, '=')
       ->execute();
     // MOLLOM_ANALYSIS_HAM (1)
     db_update('mollom')
       ->fields(array('spam' => 1))
-      ->condition($quality, 0.5, '>')
+      ->condition('quality', 0.5, '>')
       ->execute();
   }
 
@@ -826,7 +820,7 @@ function mollom_update_7008() {
   }
 
   // When upgrading from 6.x-2.x, this is {mollom}.contentId already.
-  if (!db_field_exists('mollom', 'session_id') && !db_field_exists('mollom', 'contentId') && !db_field_exists('mollom', 'content_id')) {
+  if (!db_field_exists('mollom', 'session_id') && !db_field_exists('mollom', 'contentId')) {
     db_drop_index('mollom', 'session');
     db_change_field('mollom', 'session', 'session_id', array(
       'description' => 'Session hash returned by Mollom.',
@@ -954,7 +948,7 @@ function mollom_update_7200() {
     ));
   }
   // Change 'quality' into 'qualityScore' double.
-  if (!db_field_exists('mollom', 'qualityScore') && !db_field_exists('mollom', 'quality_score')) {
+  if (!db_field_exists('mollom', 'qualityScore')) {
     db_change_field('mollom', 'quality', 'qualityScore', array(
       'description' => 'Text analysis quality check result.',
       'type' => 'float',
