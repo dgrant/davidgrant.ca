@@ -181,5 +181,12 @@ function dhtml_menu_update_7103() {
  */
 function dhtml_menu_update_7104() {
   variable_del('dhtml_menu_theme');
-}
 
+  // Fix for "Undefined index: type in dhtml_menu_preprocess_menu_link" issue
+  $settings = variable_get('dhtml_menu_settings');
+  if (!isset($settings['filter']['type'])) {
+    $settings['filter']['type'] = 'blacklist';
+    variable_set('dhtml_menu_settings', $settings);
+  }
+
+}
