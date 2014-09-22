@@ -4,9 +4,9 @@ core = 7.x
 package = Testing
 hidden = TRUE
 
-; Information added by Drupal.org packaging script on 2014-08-28
-version = "7.x-2.10+7-dev"
+; Information added by Drupal.org packaging script on 2014-09-15
+version = "7.x-2.11"
 core = "7.x"
 project = "mollom"
-datestamp = "1409253534"
+datestamp = "1410796459"
 
