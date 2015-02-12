@@ -2226,7 +2226,6 @@ function file_get_mimetype($uri, $mapping = NULL) {
  * @ingroup php_wrappers
  */
 function drupal_chmod($uri, $mode = NULL) {
-  watchdog('file', 'mode=%mode', array('%mode' => $mode), WATCHDOG_ERROR);
   if (!isset($mode)) {
     if (is_dir($uri)) {
       $mode = variable_get('file_chmod_directory', 0775);
@@ -2235,7 +2234,6 @@ function drupal_chmod($uri, $mode = NULL) {
       $mode = variable_get('file_chmod_file', 0664);
     }
   }
-  watchdog('file', 'mode=%mode', array('%mode' => $mode), WATCHDOG_ERROR);
 
   // If this URI is a stream, pass it off to the appropriate stream wrapper.
   // Otherwise, attempt PHP's chmod. This allows use of drupal_chmod even
