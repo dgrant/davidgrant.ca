@@ -5,9 +5,8 @@ package = Development
 files[] = optimizedb.test
 configure = admin/config/development/optimizedb
 
-; Information added by Drupal.org packaging script on 2016-02-11
-version = "7.x-1.6"
+; Information added by Drupal.org packaging script on 2020-12-15
+version = "7.x-1.7"
 core = "7.x"
 project = "optimizedb"
-datestamp = "1455174863"
-
+datestamp = "1608013377"
